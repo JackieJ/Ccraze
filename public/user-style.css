@@ -12,7 +12,7 @@ html,body{
 .module{
     padding:15px;
     min-height:200px;
-    height: 300px;
+    height: auto;
 }
 
 .inner-module{
