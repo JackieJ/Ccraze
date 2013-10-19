@@ -30,22 +30,23 @@ function addMembersToGroupOnly(group_name, members) {
 function addMembersToGroup(group_name, members) {
 	addMembersToGroupOnly(group_name, members)
 
-	for ( member in members ) {
-		addGrouptoUserOnly(membre, group_name);
+	for ( m in members ) {
+		addGrouptoUserOnly(members[m], group_name);
 	}
 }
 
 function addCompetitionsToGroupOnly(group_name, competitions) {
-	var groupRef = new Firebase(firebaseio_url + "groups").child(group_name);
-	groupRef.child(COMPETITIONS).push(competitions);
+	var groupRef = new Firebase(firebaseio_url + "groups/" + group_name);
+	for ( c in competitions )
+		groupRef.child(COMPETITIONS).push(competitions[c]);
 }
 
 // USE THIS
 function addCompetitionsToGroup(group_name, competitions) {
 	addCompetitionsToGroupOnly(group_name, competitions);
 
-	for ( comp in competitions) {
-		addGroupToCompetitionOnly(comp, group_name)
+	for ( c in competitions) {
+		addGroupToCompetitionOnly(competitions[c], group_name)
 	}
 }
 
