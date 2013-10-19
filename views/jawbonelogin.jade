@@ -1,5 +1,8 @@
 extends layout
 
+block append scripts
+  link(rel='stylesheet', href="jawbonelanding.css")
+
 block content
   div.jawbonelanding
     form(action="https://jawbone.com/auth/oauth2/auth", method="get")
