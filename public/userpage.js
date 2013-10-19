@@ -1,7 +1,5 @@
-//userpage.js
-
 var groups;
-//var htmlObject;
+
 function updateHTML(htmlObject){
     $('#user-stats-module').html(htmlObject.userStats);
     $('#world-stats-module').html(htmlObject.test);
