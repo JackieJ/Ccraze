@@ -83,7 +83,7 @@ function updateHTML(parameter){
 }
 
 function generateWorldStats(worldStats){
-    return "<div class='module-title'>World Stats</div><br/><div id='world-stats'>"+worldStats.calories+"</div>";
+    return "<div class='module-title'>World Stats</div><br/><span id='world-stats'>"+worldStats.calories+"Total Calories"+"</span>";
 }
 function generateUserView(user){
 
