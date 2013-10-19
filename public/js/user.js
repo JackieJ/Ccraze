@@ -3,13 +3,20 @@ var ref = new Firebase("https://ccraze.firebaseio.com");
 // global user (is this a good thing?)
 myUser = -1;
 
-function addUser(email, password){
+// add the user to the traditional firebase db
+function addUserToFirebase(email) {
+  ref.child("users").update(email);
+}
+
+function addUser(email, password) {
   authClient.createUser(email, password, function (error, user) {
     if (!error) {
       console.log('logging new registered user');
       doLogin(email, password);
       $("#register-form").hide();
       setTimeout("location.href = '/';",1000);
+
+      addUserToFirebase(email);
     } else {
       alert(error);
     }
