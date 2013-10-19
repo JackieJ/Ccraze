@@ -34,8 +34,9 @@ function getInitialData(){
     updateHTML('worldStats'); 
     updateHTML('competitions'); 
     updateHTML('goals');
-    //setInterval(getData,500);
-    worldStatsGraph();
+    setInterval(function(){updateHTML('userStats');},500);
+    setInterval(function(){updateHTML('worldStats');},500);
+    
 }
 
 function getData(){
@@ -54,11 +55,19 @@ function getData(){
 
 function updateHTML(parameter){
     switch(parameter){
-        case('userStats'):
-            $('#user-stats-module').html("<div class='inner-module'>"+generateUserView(htmlObject.userStats)+"</div>");
+        case('userStats'):$.ajax({
+            url: "http://192.249.58.243:3333",
+            type: "GET",
+        }).done(function(data){
+            $('#user-stats-module').html("<div class='inner-module'>"+generateUserView(data)+"</div>");        });
+            
             break;
-        case('worldStats'):
-            $('#world-stats-module').html("<div class='inner-module'>"+generateWorldStats(htmlObject.worldStats)+"</div>");
+        case('worldStats'):$.ajax({
+                url: "http://192.249.58.243:3333/world",
+                type: "GET",
+            }).done(function(data){
+                $('#world-stats-module').html("<div class='inner-module'>"+generateWorldStats(data)+"</div>");
+            });
             break;
         case('competitions'):$('#competitions-module').html("<div class='inner-module'>"+generateCompetitionView(htmlObject.competitions)+"</div>");
             break;
@@ -72,11 +81,12 @@ function updateHTML(parameter){
 }
 
 function generateWorldStats(worldStats){
-    return "<div class='module-title'>World Stats</div><br/><div id='world-stats'></div>";
+    return "<div class='module-title'>World Stats</div><br/><div id='world-stats'>"+worldStats.calories+"</div>";
 }
 function generateUserView(user){
+
     console.log(user);
-    return "<div class='module-title'>"+user.email+"</div><br/><div class='module-body'>You have around 75% of your goal left to achieve!</div>";
+    return "<div class='module-title'>"+user.user+"</div><br/><div class='module-body'>You have around "+user.percentage+"% of your goal left to achieve!</div>";
 }
 
 function generateCompetitionView(competitions){
