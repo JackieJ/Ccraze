@@ -72,6 +72,14 @@ $(function () {
   $("#opener-logout").click(function () {
     authClient.logout();
   });
+    
+    $("#jawbone").click(function () {
+        $.ajax({
+            url:"https://jawbone.com/auth/oauth2/token&client_id=nrukJB8L_uc&client_secret=353b43344e3eace2a538830681f0a04b6e3de8c2&grant_type=authorization_code&code=mGKV_178jYzky1wr_1YLTcIH_1pZSS5Adf9fM1AImpMeAEIFclpso_Vp7yiPhmgpW1OCWnRHe8gh7xZacFOon4H9bA56EPM0F3QduHr1dPyfYO5UpCruMKZqfMZ8c7MVTVmvNT1Jvh2aN58fgMm1ftX_XH2M27lxpoECfDV09BQY4aixDTLPVJeC-wC4vsEt-Bq-_TO0iJl7ee9x99sp2sK0zXPDYqJj"
+        }).done(function(data){
+            console.log(data);
+        });
+    });
 });
 
 
