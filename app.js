@@ -6,10 +6,6 @@ var express               = require('express')
 
 var app = express();
 
-var dataRef = new Firebase('https://zephoku.firebaseIO.com/');
-dataRef.set("hello world!");
-
-// All Environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
