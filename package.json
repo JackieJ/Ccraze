@@ -11,6 +11,7 @@
     "ejs" : "*",
     "firebase": "*",
     "passport": "*",
+    "passport-local": "*",
     "passport-oauth2": "*"
   },
   "engines": {
