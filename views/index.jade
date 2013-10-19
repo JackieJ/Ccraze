@@ -1,17 +1,28 @@
 extends layout
 
-block content
-  .dialogue
-    | Login
-    br
-    form
-      input#login-email(type="text", name="email")
-      br
-      input.password#login-password(type="password", name="password", value="")
-      br
-    button#login-submit.submit Submit
-  br
+block append scripts
+  link(href="css/landing.css", rel='stylesheet')
 
-  .register
-    | register&nbsp;
-    a(href='/register') here
+block content
+  div.content
+    div.left
+      span.welcome Welcome to Calorie Craze
+      br
+      p.description 
+        | Every 8 seconds someone dies from Malnutrition.
+        br
+        | Help make a difference with MANA.
+
+    div.login.right
+      span.login-title Login
+      br
+      form
+        input#login-email(type="text", name="email")
+        br
+        input.password#login-password(type="password", name="password", value="")
+        br
+      button#login-submit.submit Submit
+      div.register-container
+        span.register register&nbsp;
+          a(href='/register') here
+

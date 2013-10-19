@@ -1,8 +1,5 @@
 //userpage.js
 
-window.onload = function(){
-	console.log(window.location.href);
-}
 var groups;
 var htmlObject;
 $(document).ready(function(){
@@ -14,9 +11,14 @@ $(document).ready(function(){
 function getInitialData(){
     console.log("called");
     getUserObject(1,function(data){
+        console.log(data);
         htmlObject.userStats = data;
-        groups = data;
+        htmlObject.competitions = data.groups;
+        
+        user = data;
         updateHTML('userStats'); 
+        updateHTML('competitions'); 
+        
     });
     /*for(i in groups){
         getUsersInGroup(groups[i],function(data){
@@ -27,15 +29,17 @@ function getInitialData(){
     htmlObject.goals = "<div class='infoGFX infoGFX--goal'></div>";
     htmlObject.worldStats = "World stats"
     updateHTML('worldStats'); 
-    updateHTML('competitions'); 
+    updateHTML('userStats'); 
     updateHTML('goals');
-    setInterval(getData,500);
+    setInterval(function(){updateHTML('competitions');},500);
+    setInterval(function(){updateHTML('worldStats');},500);
+    
 }
 
 function getData(){
     console.log("called");
-    getGroupsOfUser(5,function(data){
-        htmlObject.userStats = data;
+    getUserObject(1,function(data){
+        htmlObject.userStats = data.email;
         groups = data;
         updateHTML('userStats'); 
     });
@@ -48,26 +52,55 @@ function getData(){
 
 function updateHTML(parameter){
     switch(parameter){
-        case('userStats'):
-            $('#user-stats-module').html("<div class='inner-module'>"+htmlObject.userStats+"</div>");
+        case('userStats'):$.ajax({
+            url: "http://192.249.58.243:3333",
+            type: "GET",
+        }).done(function(data){
+            $('#user-stats-module').html("<div class='inner-module'>"+generateUserView(data)+"</div>");        });
+            
             break;
-        case('worldStats'):
-            $('#world-stats-module').html("<div class='inner-module'>"+htmlObject.worldStats+"</div>");
+        case('worldStats'):$.ajax({
+                url: "http://192.249.58.243:3333/world",
+                type: "GET",
+            }).done(function(data){
+                $('#world-stats-module').html("<div class='inner-module'>"+generateWorldStats(data)+"</div>");
+            });
             break;
-        case('competitions'):$('#competitions-module').html("<div class='inner-module'>"+htmlObject.test+"</div>");
+        case('competitions'):$.ajax({
+                url: "http://192.249.58.243:3333/competitions",
+                type: "GET",
+            }).done(function(data){
+                 $('#competitions-module').html("<div class='inner-module'>"+generateCompetitionView(data)+"</div>");
+            });
             break;
         case('goals'):
             $('#goals-module').html("<div class='inner-module'>Goal"+htmlObject.goals+"</div>");
             goalSample();
-            
             break;
         default:
             return;
+    }   
+}
+
+function generateWorldStats(worldStats){
+    return "<div class='module-title'>World Stats</div><br/><div id='world-stats'>"+worldStats.calories+"</div>";
+}
+function generateUserView(user){
+
+    //console.log(user);
+    return "<div class='module-title'>"+user.user+"</div><br/><div class='module-body'>You have around "+user.percentage+"% of your goal left to achieve!</div>";
+}
+
+function generateCompetitionView(competitions){
+    console.log("SDFSDF",competitions);
+    usersDiv = "";
+    count = 0;
+    for(user in competitions.users){
+        console.log(user);
+        count += competitions.users[user];
+        usersDiv += "<div>"+user+":  "+competitions.users[user]+"</div>";
     }
-    
-    
-    
-        
+    return "<div class='module-title'>"+competitions.dateStart+"-"+competitions.dateEnd+"</div><div>"+count+" of "+competitions.goal+" calories fulfilled</div><div class='module-body'>"+usersDiv+"</div>"
 }
 
 function goalSample(){
@@ -228,10 +261,11 @@ function goalSample(){
             .transition()
             .delay(2250)
             .attr("class", "regionSVG")
-            .style("color", "white")
+            //.style("stroke", "#ffffff")
+            .style("fill", "#ffffff")
             .attr("y", goalRadiusCity - 2*SPACING)
-            .text("Completed");
-
+            .attr("x", -goalRadiusCity)
+            .text("completed");
     // Create breakdown legend
     /*
     var goalLegend = d3.select(".infoGFX--goal").append("div")

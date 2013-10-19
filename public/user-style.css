@@ -5,4 +5,63 @@ html,body{
 
 .module{
     padding:5px;
+    min-height:200px;
+}
+
+.inner-module{
+    padding:5px;
+    border-radius:5px;
+    background: rgba(255,255,255,0.5);
+    box-shadow:0 0 5px black;
+}
+
+.module-title{
+    font-size:20px;
+}
+
+.module-body{
+    font-size:16px;
+    padding-bottom:100px;
+}
+
+svg {
+  font: 10px sans-serif;
+}
+
+.y.axis path {
+  display: none;
+}
+
+.y.axis line {
+  stroke: #fff;
+  stroke-opacity: .2;
+  shape-rendering: crispEdges;
+}
+
+.y.axis .zero line {
+  stroke: #000;
+  stroke-opacity: 1;
+}
+
+.title {
+  font: 300 78px Helvetica Neue;
+  fill: #666;
+}
+
+.birthyear,
+.age {
+  text-anchor: middle;
+}
+
+.birthyear {
+  fill: #fff;
+}
+
+rect {
+  fill-opacity: .6;
+  fill: #e377c2;
+}
+
+rect:first-child {
+  fill: #1f77b4;
 }

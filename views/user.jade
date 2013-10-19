@@ -2,8 +2,9 @@ extends layout
 
 block append scripts
   link(href='user-style.css', rel='stylesheet', type='text/css')
-  script(src='userpage.js', style='')
-
+  script(src='userpage.js')
+  script(src='https://cdn.firebase.com/v0/firebase.js')
+  
 block content
   #user-stats-module.module.grid-50.mobile-grid-100
   #world-stats-module.module.grid-50.mobile-grid-100
