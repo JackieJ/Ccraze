@@ -1,0 +1,33 @@
+html,body{
+	padding:0;
+	margin:0;
+	background: #EA7637;
+}
+#company {
+	margin: 0;
+	font-size: 56px;
+	text-align: center;
+	color: #EA7637;
+}
+
+#backImage{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 55%;
+}
+.text{
+	text-indent: 2em;
+	color: #FFF;
+	margin-left: 361px;
+	width: 55%;
+}
+.headerContainer {
+	background: #FFF; 
+}
+.imageContainer {
+
+}
+.textContainer {
+
+}
