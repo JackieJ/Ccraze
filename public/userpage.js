@@ -83,7 +83,7 @@ function updateHTML(parameter){
 }
 
 function generateWorldStats(worldStats){
-    return "<div class='module-title'>World Stats</div><br/><span id='world-stats' class='module-body'>"+worldStats.calories+" Total Calories Burned Worldwide"+"</span>";
+    return "<div class='module-title'>World Stats</div><br/><span id='world-stats' class='module-body'>"+worldStats.calories+" Total Calories Burned Worldwide"+"</span><br/><span class='module-body'>That is " + worldStats.calories/62000 + "<span>";
 }
 function generateUserView(user){
 
@@ -100,7 +100,7 @@ function generateCompetitionView(competitions){
         count += competitions.users[user];
         usersDiv += "<div>"+user+":  "+competitions.users[user]+"</div>";
     }
-    return "<div class='module-title'>"+"Challenges: "+"br />" + competitions.dateStart+"-"+competitions.dateEnd+"</div><div class='module-body'><div>"+count+" of "+competitions.goal+" calories fulfilled</div>"+usersDiv+"</div>"
+    return "<div class='module-title'>"+"Challenges: "+"<br/>" + competitions.dateStart+"-"+competitions.dateEnd+"</div><div class='module-body'><div>"+count+" of "+competitions.goal+" calories fulfilled</div>"+usersDiv+"</div>"
 }
 
 function goalSample(){
