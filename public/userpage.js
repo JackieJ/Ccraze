@@ -1,5 +1,5 @@
 //userpage.js
 
 window.onload = function(){
-	console.log("loaded");
+	console.log(window.location.href);
 }
