@@ -10,7 +10,8 @@
     "jade": "*",
     "ejs" : "*",
     "firebase": "*",
-    "passport": "*"
+    "passport": "*",
+    "passport-oauth2": "*"
   },
   "engines": {
     "node": "0.10.20",
