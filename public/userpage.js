@@ -83,13 +83,12 @@ function updateHTML(parameter){
 }
 
 function generateWorldStats(worldStats){
-    return "<div class='module-title'>World Stats</div><span class='module-body bigger'>That is " + Math.floor(worldStats.calories/62000) + " children saved today</span>"+"<br/><span id='world-stats' class='module-body'>"+worldStats.calories+" Total Calories Burned Worldwide"+"</span><br/>";
+    return "<div class='module-title'>World Stats</div><span class='module-body bigger'>" + Math.floor(worldStats.calories/62000) + " children saved today</span>"+"<br/><span id='world-stats' class='module-body'>"+worldStats.calories+" Total Calories Burned Worldwide"+"</span><br/>";
 }
 function generateUserView(user){
 
     //console.log(user);
-    return "<div class='module-title'>"+user.user+"</div><br/><div class='module-body'>You have around "+user.percentage+"% of your goal left to achieve!</div>" +
-      "<div id='fb-root'></div><script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = '//connect.facebook.net/en_US/all.js#xfbml=1'; fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>';
+    return "<div class='module-title'>"+user.user+"</div><br/><div class='module-body'>You have around "+user.percentage+"% of your goal left to achieve!</div>";
 }
 
 function generateCompetitionView(competitions){
