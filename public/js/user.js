@@ -8,6 +8,8 @@ function addUser(email, password){
     if (!error) {
       console.log('logging new registered user');
       doLogin(email, password);
+      $("#register-form").hide();
+      setTimeout("location.href = '/';",1000);
     } else {
       alert(error);
     }
@@ -26,20 +28,20 @@ $(function () {
     var email = $("#register-email").val();
     var password = $("#register-password").val();
     addUser(email, password);
-    $("#register-form").hide();
-    setTimeout("location.href = '/';",1000);
   });
 
   $("#login-submit").click(function (e) {
     e.preventDefault();
     var email = $("#login-email").val();
     var password = $("#login-password").val();
-    doLogin(email, password);
-    setTimeout("location.href = '/user';",500);
+    if (doLogin(email, password)) {
+      setTimeout("location.href = '/user';",500);
+    }
   });
 
   $("#opener-logout").click(function () {
     authClient.logout();
+    location.href = "/";
   });
 });
 
@@ -55,18 +57,10 @@ var authClient = new FirebaseSimpleLogin(ref, function (error, user) {
     // User is already logged in.
     console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
     myUser = user;
-    $('.userId').html(user.id);
     // doLogin(user);
     console.log('logged in')
-  $("#data").attr('disabled', false);
-$("#opener-logout").attr('disabled', false);
-$("#opener-login").attr('disabled', true);
   } else {
     // User is logged out.
     console.log('logged out');
-    $("#data").attr('disabled', true);
-    $("#opener-logout").attr('disabled', true);
-    $("#opener-login").attr('disabled', false);
-    // ("#dialog-form").dialog("open");
   }
 });
