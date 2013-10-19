@@ -1,8 +1,5 @@
 //userpage.js
 
-window.onload = function(){
-	console.log(window.location.href);
-}
 var groups;
 var htmlObject;
 $(document).ready(function(){
