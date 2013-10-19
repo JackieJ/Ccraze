@@ -73,10 +73,19 @@ $(function () {
     authClient.logout();
   });
     
+    var initialHandshake1 = 
+        "https://jawbone.com/auth/oauth2/auth?"+
+        "response_type=code&client_id=nrukJB8L_uc&"+
+        "scope=extended_read%20move_read&"+
+        "redirect_uri=https://sheltered-mountain-5274.herokuapp.com/jawbone";
+    
+    //jawbone handshakes
     $("#jawbone").click(function () {
+        //first ajax call to 
         $.ajax({
-            url:"https://jawbone.com/auth/oauth2/token?client_id=nrukJB8L_uc&client_secret=353b43344e3eace2a538830681f0a04b6e3de8c2&grant_type=authorization_code&code=mGKV_178jYzky1wr_1YLTcIH_1pZSS5AL4X0Gnybjk4eAEIFclpso_Vp7yiPhmgpW1OCWnRHe8gh7xZacFOon4H9bA56EPM0F3QduHr1dPyfYO5UpCruMKZqfMZ8c7MVTVmvNT1Jvh2aN58fgMm1ftX_XH2M27lxpoECfDV09BQY4aixDTLPVJeC-wC4vsEt-Bq-_TO0iJl7ee9x99sp2sK0zXPDYqJj"
+            url:handshake1
         }).done(function(data){
+            //we need to get the data object
             console.log(data);
         });
     });
