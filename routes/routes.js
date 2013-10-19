@@ -11,4 +11,7 @@ module.exports = function (app) {
   app.get('/jawbonelogin', function(req, res) {
     res.render('jawbonelogin', { title: 'The index page!' })
   });
+  app.get('/test', function(req, res){
+    res.render('test', {title: 'testing page!'})
+  });
 };

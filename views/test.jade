@@ -1,0 +1,19 @@
+html
+  head
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', style='')
+    link(href='style.css', rel='stylesheet', type='text/css')
+    script(src='script.js')
+  body
+    .dialogue
+      | Login
+      br
+      form
+        input(type="text", name="email")
+        br
+        input.password(type="password", name="password", value="")
+        br
+        input.submit(type='submit')
+    br
+    .register
+      | register
+      a(href='http://google.com') here
