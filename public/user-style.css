@@ -6,6 +6,7 @@ html,body{
 }
 
 .module-container {
+  margin: auto;
   width: 1080px;
 }
 
@@ -22,6 +23,7 @@ html,body{
     border-radius:5px;
     background: rgba(255,255,255,0.5);
     box-shadow:0 0 5px black;
+    height: 300px;
 }
 
 .module-title{
