@@ -100,7 +100,7 @@ function generateCompetitionView(competitions){
         count += competitions.users[user];
         usersDiv += "<div>"+user+":  "+competitions.users[user]+"</div>";
     }
-    return "<div class='module-title'>"+competitions.dateStart+"-"+competitions.dateEnd+"</div><div>"+count+" of "+competitions.goal+" calories fulfilled</div><div class='module-body'>"+usersDiv+"</div>"
+    return "<div class='module-title'>"+"Challenges: "+"br />" + competitions.dateStart+"-"+competitions.dateEnd+"</div><div>"+count+" of "+competitions.goal+" calories fulfilled</div><div class='module-body'>"+usersDiv+"</div>"
 }
 
 function goalSample(){
