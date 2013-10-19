@@ -74,7 +74,7 @@ function updateHTML(parameter){
             });
             break;
         case('goals'):
-            $('#goals-module').html("<div class='inner-module'>Goal"+htmlObject.goals+"</div>");
+            $('#goals-module').html("<div class='inner-module'><div class='module-title'>Goal</div>"+htmlObject.goals+"</div>");
             goalSample();
             break;
         default:
@@ -83,7 +83,7 @@ function updateHTML(parameter){
 }
 
 function generateWorldStats(worldStats){
-    return "<div class='module-title'>World Stats</div><br/><span id='world-stats'>"+worldStats.calories+"Total Calories"+"</span>";
+    return "<div class='module-title'>World Stats</div><br/><span id='world-stats'>"+worldStats.calories+" Total Calories Burned Worldwide"+"</span>";
 }
 function generateUserView(user){
 
