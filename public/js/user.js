@@ -1,4 +1,4 @@
-var ref = new Firebase("https://zephoku.firebaseio.com");
+var ref = new Firebase("https://ccraze.firebaseio.com");
 
 // global user (is this a good thing?)
 myUser = -1;
@@ -22,51 +22,20 @@ function doLogin(email, password) {
 };
 
 $(function () {
-  $("#dialog-register").dialog({
-    autoOpen: false,
-    buttons: {
-      "ok": function () {
-        var email = $("#register-email").val();
-        var password = $("#register-password").val();
-        
-        addUser(email, password);
-        $(this).dialog("close");
-      },
-    Cancel: function () {
-      $(this).dialog("close");
-    }
-    }
-  });
-
-  $("#dialog-login").dialog({
-    autoOpen: false,
-    buttons: {
-      "ok": function () {
-        console.log('trying to login: ' + $("#login-email").val());
-
-        var email = $("#login-email").val();
-        var password = $("#login-password").val();
-
-        doLogin(email, password);
-        $(this).dialog("close");
-      },
-    Cancel: function () {
-      $(this).dialog("close");
-    }
-    }
-  });
-
-  $("#register-submit").click(function (e) {
-    e.preventDefault();
+    $("#register-submit").click(function (e) {
     var email = $("#register-email").val();
     var password = $("#register-password").val();
     addUser(email, password);
     $("#register-form").hide();
-    setTimeout("location.href = '/';",1500);
+    setTimeout("location.href = '/';",1000);
   });
 
-  $("#opener-login").click(function () {
-    $("#dialog-login").dialog("open");
+  $("#login-submit").click(function (e) {
+    e.preventDefault();
+    var email = $("#login-email").val();
+    var password = $("#login-password").val();
+    doLogin(email, password);
+    location.href = '/' + 'jawbone';
   });
 
   $("#opener-logout").click(function () {
@@ -81,6 +50,9 @@ var authClient = new FirebaseAuthClient(ref, function (error, user) {
     return;
   }
   if (user) {
+    if ($('#login-email').length > 0) {
+      location.href = '/' + 'jawbone';
+    }
     // User is already logged in.
     console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
     myUser = user;

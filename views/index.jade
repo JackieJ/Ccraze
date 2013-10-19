@@ -1,18 +1,19 @@
 extends layout
 
+block script
+  script(src='script.js')
+
 block content
-  div#dialog-login(title="Login User")
+  .dialogue
+    | Login
+    br
     form
-      fieldset
-        label(for="name") Email
-        input#login-email.text.ui-widget-content.ui-corner-all(type="text", name="email")
-        label(for="password") Password
-        input#login-password.text.ui-widget-content.ui-corner-all(type="password", name="password", value="")
-
-  button#opener-login Login
-  span.userId
-  button#opener-logout Logout
-
+      input#login-email(type="text", name="email")
+      br
+      input.password#login-password(type="password", name="password", value="")
+      br
+    button#login-submit Submit
   br
-
-  input#data
+  .register
+    | register&nbsp;
+    a(href='/register') here

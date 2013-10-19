@@ -14,4 +14,8 @@ module.exports = function (app) {
   app.get('/test', function(req, res){
     res.render('test', {title: 'testing page!'})
   });
+  app.get('/user', function (req, res) {
+    var id = req.params.id;
+    res.render('user', {title: 'User'});
+  });
 };

@@ -6,6 +6,7 @@ function getValue(path) {
 	var dataRef = new Firebase(firebaseio_url + path);
 	dataRef.on('value', function(snapshot) {
   		callBackValue = snapshot.val();
+      updateHTML(callBackValue);
 	});
 }
 
