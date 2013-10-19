@@ -83,7 +83,7 @@ function updateHTML(parameter){
 }
 
 function generateWorldStats(worldStats){
-    return "<div class='module-title'>World Stats</div><br/><span id='world-stats' class='module-body'>"+worldStats.calories+" Total Calories Burned Worldwide"+"</span><br/><span class='module-body'>That is " + Math.floor(worldStats.calories/62000) + "<span>";
+    return "<div class='module-title'>World Stats</div><br/><span id='world-stats' class='module-body'>"+worldStats.calories+" Total Calories Burned Worldwide"+"</span><br/><span class='module-body'>That is " + Math.floor(worldStats.calories/62000) + " children saved today</span>";
 }
 function generateUserView(user){
 
