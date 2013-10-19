@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  div#register-form(title="Register New User")
+    form
+      fieldset
+        label(for="name") Email
+        input#register-email(type="text", name="email")
+        label(for="password") Password
+        input#register-password(type="password", name="password", value="")
+    button#register-submit Register
+
+ 
