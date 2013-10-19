@@ -21,7 +21,7 @@ function getValue(path,callback) {
 	var dataRef = new Firebase(firebaseio_url + path);
 	dataRef.on('value', function(snapshot) {
   		callBackValue = snapshot.val();
-      callback(callBackValue);
+      	callback(callBackValue);
 	});
 }
 
@@ -39,4 +39,8 @@ function getGroupsInCompetition(competition_id,callback) {
 
 function getGroupsOfUser(user_id,callback) {
 	getValue("users/" + user_id + "/" + GROUPS,callback)
+}
+
+function getUserObject(user_id, callback) {
+	getValue("users/" + user_id, callback);
 }

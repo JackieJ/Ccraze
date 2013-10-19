@@ -4,8 +4,8 @@ var ref = new Firebase("https://ccraze.firebaseio.com");
 myUser = -1;
 
 // add the user to the traditional firebase db
-function addUserToFirebase(email) {
-  ref.child("users").update(email);
+function addUserToFirebase(user) {
+  ref.child("users").child(user.id).child("email").set(user.email);
 }
 
 function addUser(email, password) {
@@ -16,7 +16,7 @@ function addUser(email, password) {
       $("#register-form").hide();
       setTimeout("location.href = '/';",1000);
 
-      addUserToFirebase(email);
+      addUserToFirebase(user);
     } else {
       alert(error);
     }
