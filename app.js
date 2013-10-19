@@ -2,8 +2,12 @@
 var express               = require('express')
   , http                  = require('http')
   , path                  = require('path')
+  , Firebase              = require('firebase');
 
 var app = express();
+
+var dataRef = new Firebase('https://zephoku.firebaseIO.com/');
+dataRef.set("hello world!");
 
 // All Environments
 app.set('port', process.env.PORT || 3000);
@@ -35,6 +39,7 @@ app.configure('production', function(){
 })
 
 require('./routes/routes')(app);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
