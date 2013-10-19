@@ -1,36 +1,18 @@
-doctype 5
-html
-  head
-    title Calorie Cloud
-    block scripts
-      link(rel="stylesheet", href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css")
-      link(rel="stylesheet", href="/css/result-light.css")
-      script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
-      script(src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js")
-      script(src="https://cdn.firebase.com/v0/firebase.js")
-      script(src="https://cdn.firebase.com/v0/firebase-auth-client.js")
-      script(src="js/user.js")
-  body
-    div#dialog-register(title="Register New User")
-      form
-        fieldset
-          label(for="name") Email
-          input#register-email.text.ui-widget-content.ui-corner-all(type="text", name="email")
-          label(for="password") Password
-          input#register-password.text.ui-widget-content.ui-corner-all(type="password", name="password", value="")
+extends layout
 
-    div#dialog-login(title="Login User")
-      form
-        fieldset
-          label(for="name") Email
-          input#login-email.text.ui-widget-content.ui-corner-all(type="text", name="email")
-          label(for="password") Password
-          input#login-password.text.ui-widget-content.ui-corner-all(type="password", name="password", value="")
+block content
+  div#dialog-login(title="Login User")
+    form
+      fieldset
+        label(for="name") Email
+        input#login-email.text.ui-widget-content.ui-corner-all(type="text", name="email")
+        label(for="password") Password
+        input#login-password.text.ui-widget-content.ui-corner-all(type="password", name="password", value="")
 
-    button#opener-register Register
-    button#opener-login Login
-    button#opener-logout Logout
+  button#opener-login Login
+  span.userId
+  button#opener-logout Logout
 
-    br
+  br
 
-    input#data
+  input#data
