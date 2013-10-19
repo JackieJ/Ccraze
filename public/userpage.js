@@ -11,9 +11,14 @@ $(document).ready(function(){
 function getInitialData(){
     console.log("called");
     getUserObject(1,function(data){
+        console.log(data);
         htmlObject.userStats = data;
-        groups = data;
+        htmlObject.competitions = data.groups;
+        
+        user = data;
         updateHTML('userStats'); 
+        updateHTML('competitions'); 
+        
     });
     /*for(i in groups){
         getUsersInGroup(groups[i],function(data){
@@ -26,13 +31,14 @@ function getInitialData(){
     updateHTML('worldStats'); 
     updateHTML('competitions'); 
     updateHTML('goals');
-    setInterval(getData,500);
+    //setInterval(getData,500);
+    worldStatsGraph();
 }
 
 function getData(){
     console.log("called");
-    getGroupsOfUser(5,function(data){
-        htmlObject.userStats = data;
+    getUserObject(1,function(data){
+        htmlObject.userStats = data.email;
         groups = data;
         updateHTML('userStats'); 
     });
@@ -46,30 +52,36 @@ function getData(){
 function updateHTML(parameter){
     switch(parameter){
         case('userStats'):
-            $('#user-stats-module').html("<div class='inner-module'>"+htmlObject.userStats+"</div>");
+            $('#user-stats-module').html("<div class='inner-module'>"+generateUserView(htmlObject.userStats)+"</div>");
             break;
         case('worldStats'):
-            $('#world-stats-module').html("<div class='inner-module'>"+htmlObject.worldStats+"</div>");
+            $('#world-stats-module').html("<div class='inner-module'>"+generateWorldStats(htmlObject.worldStats)+"</div>");
             break;
-        case('competitions'):$('#competitions-module').html("<div class='inner-module'>"+htmlObject.test+"</div>");
+        case('competitions'):$('#competitions-module').html("<div class='inner-module'>"+generateCompetitionView(htmlObject.competitions)+"</div>");
             break;
         case('goals'):
             $('#goals-module').html("<div class='inner-module'>Goal"+htmlObject.goals+"</div>");
             goalSample();
-            
             break;
         default:
             return;
-    }
-
-    //console.log(window.location.href);
-    console.log("hello!");
-    var jb = new JawBone(window.location.href);
-    jb.getPToken();
+    }   
 }
-    
-    
-        
+
+function generateWorldStats(worldStats){
+    return "<div class='module-title'>World Stats</div><br/><div id='world-stats'></div>";
+}
+function generateUserView(user){
+    console.log(user);
+    return "<div class='module-title'>"+user.email+"</div><br/><div class='module-body'>You have around 75% of your goal left to achieve!</div>";
+}
+
+function generateCompetitionView(competitions){
+    console.log(competitions);
+    if(typeof(competitions)=="Object")
+        return Object.keys(competitions);
+    else
+        return "SDF";
 }
 
 function goalSample(){
@@ -230,10 +242,11 @@ function goalSample(){
             .transition()
             .delay(2250)
             .attr("class", "regionSVG")
-            .style("color", "white")
+            //.style("stroke", "#ffffff")
+            .style("fill", "#ffffff")
             .attr("y", goalRadiusCity - 2*SPACING)
-            .text("Completed");
-
+            .attr("x", -goalRadiusCity)
+            .text("completed");
     // Create breakdown legend
     /*
     var goalLegend = d3.select(".infoGFX--goal").append("div")

@@ -16,10 +16,12 @@ input{
     font-size: 28px;
     padding: 0 5px;
     margin-top:20px;
-    //border-radius: 10px;
     border:none;
     outline:none;
     box-shadow: 0 0 5px rgba(0,0,0,.5);
+  font-size: 62.5%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100; 
 }
 
 a{
@@ -87,3 +89,30 @@ a{
 .error{
     color:rgba(175,0,0,.7);
 }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+html {
+  height: 100%;
+  width: 100%;
+}
+body {
+  height: 100%;
+  width: 100%;
+  background: url("http://dvcole.files.wordpress.com/2011/08/hands-reaching.jpg");
+  background-size: 100% 100%;
+
+}
+.jawbonelanding {
+  background-color: rgba(244, 244, 244, .5);
+  color: rgba(244, 244, 244, .5);
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+  padding: 20px;
+  text-shadow: 0 0 0px rgba(0,0,0,.7);
+  position: relative;
+  top: 300px;
+  font-weight: bold;
+  margin: auto;
+  width: 305px;
+  height: 80px;;
+  
+
+}
