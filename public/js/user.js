@@ -35,7 +35,7 @@ $(function () {
     var email = $("#login-email").val();
     var password = $("#login-password").val();
     doLogin(email, password);
-    location.href = '/' + 'jawbone';
+    setTimeout("location.href = '/user';",500);
   });
 
   $("#opener-logout").click(function () {
@@ -43,15 +43,14 @@ $(function () {
   });
 });
 
-
-var authClient = new FirebaseAuthClient(ref, function (error, user) {
+var authClient = new FirebaseSimpleLogin(ref, function (error, user) {
   if (error) {
     alert(error);
     return;
   }
   if (user) {
     if ($('#login-email').length > 0) {
-      location.href = '/' + 'jawbone';
+      location.href = '/user';
     }
     // User is already logged in.
     console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
