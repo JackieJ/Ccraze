@@ -6,6 +6,9 @@ html,body{
 .module{
     padding:5px;
     min-height:200px;
+    height: 300px;
+    width: 40%;
+    margin: 20px;
 }
 
 .inner-module{
