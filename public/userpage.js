@@ -32,9 +32,9 @@ function getInitialData(){
     htmlObject.goals = "<div class='infoGFX infoGFX--goal'></div>";
     htmlObject.worldStats = "World stats"
     updateHTML('worldStats'); 
-    updateHTML('competitions'); 
+    updateHTML('userStats'); 
     updateHTML('goals');
-    setInterval(function(){updateHTML('userStats');},500);
+    setInterval(function(){updateHTML('competitions');},500);
     setInterval(function(){updateHTML('worldStats');},500);
     
 }
@@ -69,7 +69,12 @@ function updateHTML(parameter){
                 $('#world-stats-module').html("<div class='inner-module'>"+generateWorldStats(data)+"</div>");
             });
             break;
-        case('competitions'):$('#competitions-module').html("<div class='inner-module'>"+generateCompetitionView(htmlObject.competitions)+"</div>");
+        case('competitions'):$.ajax({
+                url: "http://192.249.58.243:3333/competitions",
+                type: "GET",
+            }).done(function(data){
+                 $('#competitions-module').html("<div class='inner-module'>"+generateCompetitionView(data)+"</div>");
+            });
             break;
         case('goals'):
             $('#goals-module').html("<div class='inner-module'>Goal"+htmlObject.goals+"</div>");
@@ -85,16 +90,20 @@ function generateWorldStats(worldStats){
 }
 function generateUserView(user){
 
-    console.log(user);
+    //console.log(user);
     return "<div class='module-title'>"+user.user+"</div><br/><div class='module-body'>You have around "+user.percentage+"% of your goal left to achieve!</div>";
 }
 
 function generateCompetitionView(competitions){
-    console.log(competitions);
-    if(typeof(competitions)=="Object")
-        return Object.keys(competitions);
-    else
-        return "SDF";
+    console.log("SDFSDF",competitions);
+    usersDiv = "";
+    count = 0;
+    for(user in competitions.users){
+        console.log(user);
+        count += competitions.users[user];
+        usersDiv += "<div>"+user+":  "+competitions.users[user]+"</div>";
+    }
+    return "<div class='module-title'>"+competitions.dateStart+"-"+competitions.dateEnd+"</div><div>"+count+" of "+competitions.goal+" calories fulfilled</div><div class='module-body'>"+usersDiv+"</div>"
 }
 
 function goalSample(){
