@@ -1,0 +1,112 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, user-scalable=false;">
+<title>fresity - Off campus living done right</title>
+<link href='http://fonts.googleapis.com/css?family=Karla|QuickSand|Open+Sans+Condensed|Ubuntu:400,300italic|Titillium+Web:400,300,200italic' rel='stylesheet' type='text/css'>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script src="main.js"></script>
+<style>
+html,body{
+    margin:0;
+    padding:0;
+    font-family: 'QuickSand', sans-serif;
+    background:rgb(67,166,53);//rgb(105,176,223);
+}
+#map-canvas{
+    height:100%;
+    width:100%;
+    position: absolute;
+    top:0;
+    right:0;
+    z-index:1;
+    opacity:0;
+    pointer-events: none;
+}
+
+.pointer-events-on{
+    pointer-events: auto;
+}
+
+.welcome{
+    width:100%;
+    padding-top:150px;
+    text-align:center;
+    //font-family: 'Ubuntu', sans-serif;
+    font-weight:100;
+    font-size:4em;
+    color: white;
+    text-shadow: 0px 2px 3px rgba(0,0,0,0.5);
+}
+footer{
+    position:absolute;
+    bottom:5;
+    right:5;
+    color:white;
+    text-shadow: 0px 2px 5px black;
+    font-size:18px;
+}
+.college-search{
+    position:relative;
+    z-index:2;
+    width:300px;
+    height:40px;
+    font-size: 28px;
+    padding: 0 5px;
+    margin-top:20px;
+    //border-radius: 10px;
+    border:none;
+    outline:none;
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+}
+.college-search:focus {
+   border:none;
+}
+.results{
+    font-size: 25px;
+    //border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+    background:white;
+    position:relative;
+    z-index:2;
+    margin:40px auto;
+    margin-top:-20px;
+    width:350px;
+    word-wrap: break-word;    
+    display:none;
+}
+.result{
+    padding:2px; 
+}
+.result:hover {
+    cursor:pointer;
+    background:rgb(105,176,246);
+    color:white;
+}
+.subheading{
+    margin-top:20px;
+    color:white;
+    text-shadow:0 2px 2px rgba(0,0,0,0.5);
+}
+</style>
+</head>
+<body>
+<div class="welcome">fresity<br/>
+<!--<img src="http://www.veryicon.com/icon/png/System/DelliPack%202.0/Home%20House.png"/>
+-->
+</div>
+<div style="width:100%;text-align:center;">
+<input class="college-search" type=text onkeyup="displayFunc(this.value);"></input>
+<div class="subheading">type to find your college</div>
+</div>
+<div style="width:100%;text-align:center;">
+<div class="results"></div>
+</div>
+
+<div id="map-cover"></div>
+<div id="map-canvas"></div>
+<footer>
+Coming soon to Pittsburgh
+</footer>
+</body>
+</html>
