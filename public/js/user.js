@@ -35,7 +35,7 @@ $(function () {
     var email = $("#login-email").val();
     var password = $("#login-password").val();
     if (doLogin(email, password)) {
-      setTimeout("location.href = '/user';",500);
+      setTimeout("location.href = '/jawbonelogin';",500);
     }
   });
 
@@ -44,20 +44,17 @@ $(function () {
     location.href = "/";
   });
     
-    var initialHandshake1 = 
-        "https://jawbone.com/auth/oauth2/auth?"+
-        "response_type=code&client_id=nrukJB8L_uc&"+
-        "scope=extended_read%20move_read&"+
-        "redirect_uri=https://sheltered-mountain-5274.herokuapp.com/jawbone";
+    var initialHandshake1 = "https://jawbone.com/user/signin/login?email=liveaeon@gmail.com&pwd=jawbone8888&service=nudge"
     
     //jawbone handshakes
     $("#jawbone").click(function () {
         //first ajax call to 
         $.ajax({
-            url:handshake1
+            url:initialHandshake1
+            
         }).done(function(data){
             //we need to get the data object
-            console.log(data);
+            console.log(data.user.goals.move);
         });
     });
 });
@@ -69,7 +66,7 @@ var authClient = new FirebaseSimpleLogin(ref, function (error, user) {
   }
   if (user) {
     if ($('#login-email').length > 0) {
-      location.href = '/user';
+      location.href = '/jawbonelogin';
     }
     // User is already logged in.
     console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
