@@ -17,26 +17,26 @@ var GROUPS = "groups"
 // check this value for return of getValue 
 var callBackValue; 
 
-function getValue(path) {
+function getValue(path,callback) {
 	var dataRef = new Firebase(firebaseio_url + path);
 	dataRef.on('value', function(snapshot) {
   		callBackValue = snapshot.val();
-      updateHTML(callBackValue);
+      callback(callBackValue);
 	});
 }
 
-function getCompetitionsOfGroup(group_id) {
-	getValue("groups/" + group_id + "/" + COMPETITIONS);
+function getCompetitionsOfGroup(group_id,callback) {
+	getValue("groups/" + group_id + "/" + COMPETITIONS,callback);
 }
 
-function getUsersInGroup(group_id) {
-	getValue("groups/" + group_id + "/" + MEMBERS);
+function getUsersInGroup(group_id,callback) {
+	getValue("groups/" + group_id + "/" + MEMBERS,callback);
 }
 
-function getGroupsInCompetition(competition_id) {
-	getValue("competitions/" + competition_id + "/" + GROUPS);
+function getGroupsInCompetition(competition_id,callback) {
+	getValue("competitions/" + competition_id + "/" + GROUPS,callback);
 }
 
-function getGroupsOfUser(user_id) {
-	getValue("users/" + user_id + "/" + GROUPS)
+function getGroupsOfUser(user_id,callback) {
+	getValue("users/" + user_id + "/" + GROUPS,callback)
 }
