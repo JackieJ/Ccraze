@@ -3,8 +3,6 @@ var express             = require('express')
 , http                  = require('http')
 , path                  = require('path')
 , Firebase              = require('firebase')
-, passport              = require('passport')
-, LocalStrategy = require('passport-local').Strategy;
 
 var app = express();
 
@@ -23,8 +21,6 @@ app.use(express.methodOverride());
 app.use(express.cookieParser('your secret here'));
 app.use(express.session());
 
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -41,17 +37,9 @@ app.configure('development', function(){
 app.configure('production', function(){
   app.locals.pretty = false;
 })
-app.post('/login',
-  passport.authenticate('local', 
-    { successRedirect: '/',
-      failureRedirect: '/login',
-      failureFlash: true })
-);
 
 // Routes
 require('./routes/routes')(app);
-
-
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

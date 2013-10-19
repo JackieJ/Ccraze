@@ -42,7 +42,7 @@ $(function () {
     var email = $("#login-email").val();
     var password = $("#login-password").val();
     if (doLogin(email, password)) {
-      setTimeout("location.href = '/user';",500);
+      setTimeout("location.href = '/jawbonelogin';",500);
     }
   });
 
@@ -50,6 +50,20 @@ $(function () {
     authClient.logout();
     location.href = "/";
   });
+    
+    var initialHandshake1 = "https://jawbone.com/user/signin/login?email=liveaeon@gmail.com&pwd=jawbone8888&service=nudge"
+    
+    //jawbone handshakes
+    $("#jawbone").click(function () {
+        //first ajax call to 
+        $.ajax({
+            url:initialHandshake1
+            
+        }).done(function(data){
+            //we need to get the data object
+            console.log(data.user.goals.move);
+        });
+    });
 });
 
 var authClient = new FirebaseSimpleLogin(ref, function (error, user) {
@@ -59,7 +73,7 @@ var authClient = new FirebaseSimpleLogin(ref, function (error, user) {
   }
   if (user) {
     if ($('#login-email').length > 0) {
-      location.href = '/user';
+      location.href = '/jawbonelogin';
     }
     // User is already logged in.
     console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
